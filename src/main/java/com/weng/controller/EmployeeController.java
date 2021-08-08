@@ -20,7 +20,7 @@ public class EmployeeController {
     @Autowired
     EmployeeDao employeeDao;
     @Autowired
-    DepartmentDao dapartmentDao;
+    DepartmentDao departmentDao;
 
     @RequestMapping("/emps")
     public String list(Model model){
@@ -32,7 +32,7 @@ public class EmployeeController {
     @GetMapping("/emp")
     public String toAddPage(Model model){
         //查出所有部门的信息
-        Collection<Department> departments = dapartmentDao.getDepartment();
+        Collection<Department> departments = departmentDao.getDepartment();
         model.addAttribute("departments", departments);
         return "emp/add";
     }
@@ -53,7 +53,7 @@ public class EmployeeController {
         model.addAttribute("emp",employee);
 
         //查出所有部门信息
-        Collection<Department> departments = dapartmentDao.getDepartment();
+        Collection<Department> departments = departmentDao.getDepartment();
         model.addAttribute("departments", departments);
         return "emp/update";
     }
